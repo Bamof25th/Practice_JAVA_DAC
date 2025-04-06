@@ -6,4 +6,6 @@
     <fullyQualifiedTypeName name="com.app.utils.StatusEnum"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="com.app.operations.TaskListImplemeantation"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
 </qualifiedTypeNameHistroy>
