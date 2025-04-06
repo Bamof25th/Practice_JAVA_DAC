@@ -1,0 +1,61 @@
+package com.app.operations;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+
+import com.app.core.Task;
+import com.app.utils.StatusEnum;
+
+public class TaskListImplemeantation implements TaskManager {
+	private HashMap<Integer, Task> taskMap;
+
+	public TaskListImplemeantation() {
+
+		this.taskMap = new HashMap<>();
+	}
+
+	@Override
+	public void addTask(String taskName, String description, String taskDate, String status) {
+
+		LocalDate ld = LocalDate.parse(taskDate);
+		StatusEnum s = StatusEnum.valueOf(status.toUpperCase());
+		Task t = new Task(taskName, description, ld, s);
+		taskMap.put(Task.getTaskId(), t);
+	}
+
+	@Override
+	public String deleteTask(int taskId) {
+		
+		Task t  = taskMap.get(taskId);
+		taskMap.remove(taskId);
+		
+		return t +" deleted Succesfully!!!";
+	}
+
+	@Override
+	public String updateTaskStatus(int taskId , String status) {
+
+		Task t = taskMap.get(taskId);
+		t.
+		
+		return null;
+	}
+
+	@Override
+	public void displayAllPendingTasks() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void displayAllTaskForToday() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void displayAllSorted() {
+		// TODO Auto-generated method stub
+
+	}
+}

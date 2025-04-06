@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 05 Apr 2025 00:34:09 GMT</lastBuildDate><item><title><![CDATA[A Bootiful Podcast: AWS Developer Advocate and industry legend James Ward]]></title><link>https://spring.io/blog/2025/04/04/a-bootiful-podcast-james-ward</link><guid isPermaLink="true">https://spring.io/blog/2025/04/04/a-bootiful-podcast-james-ward</guid><dc:creator><![CDATA[joshlong]]></dc:creator><pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment I talk to AWS Developer Advocate and industry legend James Ward about AWS Bedrock, Amazon Cohere, Spring AI, MCP, and so much more!&lt;/p&gt;
+&lt;iframe title=&quot;AWS Developer Advocate and industry legend James Ward&quot; allowtransparency=&quot;true&quot; height=&quot;300&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:300px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?from=embed&amp;i=nwknt-186f45f-pb&amp;square=1&amp;share=1&amp;download=1&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;rtl=0&amp;logo_link=&amp;btn-skin=7&amp;size=300&quot; loading=&quot;lazy&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Using Spring AI 1.0.0-SNAPSHOT: Part 2 - Important Changes and Updates]]></title><link>https://spring.io/blog/2025/04/04/spring-ai-using-snapshots-part-2</link><guid isPermaLink="true">https://spring.io/blog/2025/04/04/spring-ai-using-snapshots-part-2</guid><dc:creator><![CDATA[markpollack]]></dc:creator><pubDate>Fri, 04 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h1 id=&quot;using-spring-ai-100-snapshot-part-2---important-changes-and-updates&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-spring-ai-100-snapshot-part-2---important-changes-and-updates&quot; aria-label=&quot;using spring ai 100 snapshot part 2   important changes and updates permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using Spring AI 1.0.0-SNAPSHOT: Part 2 - Important Changes and Updates&lt;/h1&gt;
+&lt;p&gt;This blog post is a continuation of our previous article &lt;a href=&quot;https://spring.io/blog/2025/03/25/spring-ai-using-snapshots&quot;&gt;Using Spring AI 1.0.0-SNAPSHOT: Important Changes and Updates&lt;/a&gt;, where we introduced the significant changes to artifact IDs, dependency management, and autoconfiguration in Spring AI 1.0.0-SNAPSHOT.&lt;/p&gt;
+&lt;p&gt;Since publishing that article, the Spring team has released an updates to the snapshots, In this follow-up article, we&apos;ll explore the latest changes and provide additional guidance for developers working with the snapshot versions. For comprehensive details, refer to the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/upgrade-notes.html&quot;&gt;Spring AI Upgrade Notes&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;module-restructuring&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#module-restructuring&quot; aria-label=&quot;module restructuring permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Module Restructuring&lt;/h2&gt;
+&lt;p&gt;As of April 4, 2025, the main branch has undergone significant changes to the module and artifact structure. Previously, &lt;code&gt;spring-ai-core&lt;/code&gt; contained all central interfaces, but this has now been split into specialized domain modules to reduce unnecessary dependencies in your applications.&lt;/p&gt;
+&lt;h3 id=&quot;package-name-changes&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#package-name-changes&quot; aria-label=&quot;package name changes permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Package Name Changes&lt;/h3&gt;
+&lt;p&gt;Some classes have moved to new packages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ContentFormatTransformer&lt;/code&gt; and &lt;code&gt;KeywordMetadataEnricher&lt;/code&gt; moved from &lt;code&gt;org.springframework.ai.transformer&lt;/code&gt; to &lt;code&gt;org.springframework.ai.chat.transformer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Content&lt;/code&gt;, &lt;code&gt;MediaContent&lt;/code&gt;, and &lt;code&gt;Media&lt;/code&gt; moved from &lt;code&gt;org.springframework.ai.model&lt;/code&gt; to &lt;code&gt;org.springframework.ai.content&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;new-module-structure&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#new-module-structure&quot; aria-label=&quot;new module structure permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;New Module Structure&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/spring-projects/spring-ai/main/spring-ai-docs/src/main/antora/modules/ROOT/images/spring-ai-dependencies.png&quot; alt=&quot;Spring AI Dependencies&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;spring-ai-commons&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-commons&quot; aria-label=&quot;spring ai commons permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-commons&lt;/h4&gt;
+&lt;p&gt;Base module with no dependencies on other Spring AI modules. Contains:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Core domain models (&lt;code&gt;Document&lt;/code&gt;, &lt;code&gt;TextSplitter&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;JSON utilities and resource handling&lt;/li&gt;
+&lt;li&gt;Structured logging and observability support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-model&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-model&quot; aria-label=&quot;spring ai model permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-model&lt;/h4&gt;
+&lt;p&gt;Provides AI capability abstractions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interfaces like &lt;code&gt;ChatModel&lt;/code&gt;, &lt;code&gt;EmbeddingModel&lt;/code&gt;, and &lt;code&gt;ImageModel&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Message types and prompt templates&lt;/li&gt;
+&lt;li&gt;Function-calling framework (&lt;code&gt;ToolDefinition&lt;/code&gt;, &lt;code&gt;ToolCallback&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Content filtering and observation support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-vector-store&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-vector-store&quot; aria-label=&quot;spring ai vector store permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-vector-store&lt;/h4&gt;
+&lt;p&gt;Unified vector database abstraction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;VectorStore&lt;/code&gt; interface for similarity search&lt;/li&gt;
+&lt;li&gt;Advanced filtering with SQL-like expressions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SimpleVectorStore&lt;/code&gt; for in-memory usage&lt;/li&gt;
+&lt;li&gt;Batching support for embeddings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-client-chat&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-client-chat&quot; aria-label=&quot;spring ai client chat permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-client-chat&lt;/h4&gt;
+&lt;p&gt;High-level conversational AI APIs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ChatClient&lt;/code&gt; interface&lt;/li&gt;
+&lt;li&gt;Conversation persistence via &lt;code&gt;ChatMemory&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Response conversion with &lt;code&gt;OutputConverter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Advisor-based interception&lt;/li&gt;
+&lt;li&gt;Synchronous and reactive streaming support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-advisors-vector-store&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-advisors-vector-store&quot; aria-label=&quot;spring ai advisors vector store permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-advisors-vector-store&lt;/h4&gt;
+&lt;p&gt;Bridges chat with vector stores for RAG:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;QuestionAnswerAdvisor&lt;/code&gt;: injects context into prompts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VectorStoreChatMemoryAdvisor&lt;/code&gt;: stores/retrieves conversation history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-model-chat-memory-cassandra&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-model-chat-memory-cassandra&quot; aria-label=&quot;spring ai model chat memory cassandra permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-model-chat-memory-cassandra&lt;/h4&gt;
+&lt;p&gt;Apache Cassandra persistence for &lt;code&gt;ChatMemory&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CassandraChatMemory&lt;/code&gt; implementation&lt;/li&gt;
+&lt;li&gt;Type-safe CQL with Cassandra&apos;s QueryBuilder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;spring-ai-model-chat-memory-neo4j&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-model-chat-memory-neo4j&quot; aria-label=&quot;spring ai model chat memory neo4j permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-model-chat-memory-neo4j&lt;/h4&gt;
+&lt;p&gt;Neo4j graph database persistence for chat conversations.&lt;/p&gt;
+&lt;h4 id=&quot;spring-ai-rag&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-ai-rag&quot; aria-label=&quot;spring ai rag permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;spring-ai-rag&lt;/h4&gt;
+&lt;p&gt;Comprehensive framework for Retrieval Augmented Generation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modular architecture for RAG pipelines&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RetrievalAugmentationAdvisor&lt;/code&gt; as main entry point&lt;/li&gt;
+&lt;li&gt;Functional programming principles with composable components&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;dependency-hierarchy&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#dependency-hierarchy&quot; aria-label=&quot;dependency hierarchy permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Dependency Hierarchy&lt;/h2&gt;
+&lt;p&gt;The new dependency structure follows this pattern:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;spring-ai-commons&lt;/code&gt; (foundation)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spring-ai-model&lt;/code&gt; (depends on commons)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spring-ai-vector-store&lt;/code&gt; and &lt;code&gt;spring-ai-client-chat&lt;/code&gt; (both depend on model)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spring-ai-advisors-vector-store&lt;/code&gt; and &lt;code&gt;spring-ai-rag&lt;/code&gt; (depend on both client-chat and vector-store)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spring-ai-model-chat-memory-*&lt;/code&gt; modules (depend on client-chat)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;migration-guide&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#migration-guide&quot; aria-label=&quot;migration guide permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Migration Guide&lt;/h2&gt;
+&lt;p&gt;To migrate your existing Spring AI applications:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If you are using the Spring Boot starters, you don&apos;t need to do anything as you will pick up the new artifacts as necessary.&lt;/li&gt;
+&lt;li&gt;Refactor imports for relocated classes (your IDE should assist with this)&lt;/li&gt;
+&lt;li&gt;If using &lt;code&gt;spring-ai-core&lt;/code&gt; directly, replace with the appropriate new modules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;These changes represent a significant improvement in the Spring AI architecture, allowing for more targeted dependencies and cleaner separation of concerns. By breaking the monolithic core into domain-specific modules, applications can now include only the functionality they need, resulting in smaller deployments and clearer boundaries between components.&lt;/p&gt;
+&lt;p&gt;For more details, refer to the &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/&quot;&gt;official Spring AI documentation&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Securing Spring AI MCP servers with OAuth2]]></title><link>https://spring.io/blog/2025/04/02/mcp-server-oauth2</link><guid isPermaLink="true">https://spring.io/blog/2025/04/02/mcp-server-oauth2</guid><dc:creator><![CDATA[dgarnier]]></dc:creator><pubDate>Wed, 02 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Spring AI offers &lt;a href=&quot;https://docs.spring.io/spring-ai/reference/1.0/api/mcp/mcp-overview.html&quot;&gt;support for Model Context Protocol&lt;/a&gt;, or MCP for short, which allows AI models to interact with and access external tools and resources in a structured way.
+With Spring AI, developers can create their own MCP Servers and expose capabilities to AI models in just a few lines of code.&lt;/p&gt;
+&lt;h2 id=&quot;authorization-and-security-in-mcp&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#authorization-and-security-in-mcp&quot; aria-label=&quot;authorization and security in mcp permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Authorization and security in MCP&lt;/h2&gt;
+&lt;p&gt;MCP Servers can run locally, using the STDIO transport.
+To expose an MCP server to the outside world, it must expose a few standard HTTP endpoints.
+While MCP Servers used privately might not require strict authentication, enterprise deployments need robust security and permission management for exposed endpoints.
+This challenge is addressed in the &lt;a href=&quot;https://spec.modelcontextprotocol.io/specification/2025-03-26/&quot;&gt;newest version of the MCP specification (2025-03-26)&lt;/a&gt;, which was released last week.
+It lays the foundation for securing communications between Clients and Servers, leveraging the widespread &lt;a href=&quot;https://oauth.net/2/&quot;&gt;OAuth2 framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While we won&apos;t do a full review of OAuth2 in this blog post, a quick refresher might prove useful.
+In the draft of the spec, the MCP Server is both a Resource Server and an Authorization Server.&lt;/p&gt;
+&lt;p&gt;As a Resource Server, it performs authorization checks on incoming requests by checking the &lt;code&gt;Authorization&lt;/code&gt; header.
+The header MUST contain an OAuth2 &lt;code&gt;access_token&lt;/code&gt;, which is a string representing the &quot;permissions&quot; of the Client.
+That token may be a JSON Web Token (JWT) or an opaque string that does not carry information by itself.
+If the token is missing or invalid (malformed, expired, wrong recipient, ...), the Resource Server rejects the request.
+Using those tokens, a typical request might look like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;curl https://mcp.example.com/sse
+    -H &quot;Authorization: Bearer &amp;#x3C;a valid access token&gt;&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As an Authorization Server, the MCP Server must also be able to issue &lt;code&gt;access_token&lt;/code&gt;s for clients in a secure fashion.
+Before issuing a token, the Server will verify the Client&apos;s credentials, and, in some cases, the identity of the user trying to access the Server.
+The Authorization Server will decide the characteristics of the token: its expiry, scope, intended audiences, etc.&lt;/p&gt;
+&lt;p&gt;Using Spring Security and Spring Authorization Server, we can easily add both capabilities to an existing Spring MCP Server.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.spring.io/blog/dgarnier/20250402/spring-mcp-oauth2.png&quot; alt=&quot;OAuth2 diagram with MCP Client and MCP Server&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;adding-oauth2-to-your-spring-mcp-server&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#adding-oauth2-to-your-spring-mcp-server&quot; aria-label=&quot;adding oauth2 to your spring mcp server permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Adding OAuth2 to your Spring MCP server&lt;/h2&gt;
+&lt;p&gt;In this example, we will add OAuth 2 support to a sample MCP Server - the &lt;a href=&quot;https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-webmvc-server&quot;&gt;&quot;Weather&quot; MCP tool&lt;/a&gt; from our Spring AI examples repository.
+We will not explore the client-side of the interaction, only ensure our server can issue tokens and validate them.&lt;/p&gt;
+&lt;p&gt;First, we import the required Boot starters in &lt;code&gt;pom.xml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;dependency&gt;
+    &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+    &amp;#x3C;artifactId&gt;spring-boot-starter-oauth2-resource-server&amp;#x3C;/artifactId&gt;
+&amp;#x3C;/dependency&gt;
+&amp;#x3C;dependency&gt;
+    &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+    &amp;#x3C;artifactId&gt;spring-boot-starter-oauth2-authorization-server&amp;#x3C;/artifactId&gt;
+&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, we configure an OAuth2 Client in our &lt;code&gt;application.properties&lt;/code&gt;, so that we can request access tokens:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-properties&quot;&gt;spring.security.oauth2.authorizationserver.client.oidc-client.registration.client-id=mcp-client
+spring.security.oauth2.authorizationserver.client.oidc-client.registration.client-secret={noop}secret
+spring.security.oauth2.authorizationserver.client.oidc-client.registration.client-authentication-methods=client_secret_basic
+spring.security.oauth2.authorizationserver.client.oidc-client.registration.authorization-grant-types=client_credentials
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the simplest possible client.
+We can interact with the authorization server directly by making POST requests, no browser needed, and use the hard-coded credentials &lt;code&gt;mcp-client&lt;/code&gt; / &lt;code&gt;secret&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The last step is to enable the authorization server and resource server features.
+We do so by creating a configuration class for our security features, for example &lt;code&gt;SecurityConfiguration&lt;/code&gt;, in which we expose a &lt;code&gt;SecurityFilterChain&lt;/code&gt; bean:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import static org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer.authorizationServer;
+
+@Configuration
+@EnableWebSecurity
+class SecurityConfiguration {
+
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		return http.authorizeHttpRequests(auth -&gt; auth.anyRequest().authenticated())
+			.with(authorizationServer(), Customizer.withDefaults())
+			.oauth2ResourceServer(resource -&gt; resource.jwt(Customizer.withDefaults()))
+			.csrf(CsrfConfigurer::disable)
+			.cors(Customizer.withDefaults())
+			.build();
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This filter chain will do a number of things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure every request is authenticated. With this, our MCP Server will only allow requests with an &lt;code&gt;access_token&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Enable both Spring Authorization Server and Spring Resource Server.&lt;/li&gt;
+&lt;li&gt;Turn off CSRF (Cross-Site Request Forgery). An MCP server is not designed for browser-based interactions, and does not require CSRF.&lt;/li&gt;
+&lt;li&gt;Turn on CORS (Cross-Origin Resource Sharing) support, so we can demo the server with the MCP inspector.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With this, our application is secured, and will only accept requests that have an access token.
+Otherwise, requests will be rejected, with an &lt;code&gt;HTTP 401 Unauthorized&lt;/code&gt; error. For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;curl http://localhost:8080/sse --fail-with-body
+#
+# Response:
+#
+# curl: (22) The requested URL returned error: 401
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To use our MCP server, we need to obtain an access token first.
+We use the &lt;code&gt;client_credentials&lt;/code&gt; OAuth2 grant, which is used in &quot;machine to machine&quot; or &quot;service account&quot; scenarios:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;curl -XPOST http://localhost:8080/oauth2/token --data grant_type=client_credentials --user mcp-client:secret
+#
+# Response:
+#
+# {&quot;access_token&quot;:&quot;&amp;#x3C;YOUR-ACCESS-TOKEN&gt;&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:299}%
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Copy the value of the &lt;code&gt;access_token&lt;/code&gt;. It starts with letters &quot;ey&quot;.
+We can now use this access token to make requests, and they should succeed.
+For example using &lt;code&gt;curl&lt;/code&gt;, your can replace &lt;code&gt;YOUR_ACCESS_TOKEN&lt;/code&gt; by the value you copied above:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;curl http://localhost:8080/sse -H&quot;Authorization: Bearer YOUR_ACCESS_TOKEN&quot;
+#
+# Response:
+#
+# id:918d5ebe-9ae5-4b04-aae8-c1ff8cdbb6e0
+# event:endpoint
+# data:/mcp/message?sessionId=918d5ebe-9ae5-4b04-aae8-c1ff8cdbb6e0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It is also possible to use the access token directly in the &lt;a href=&quot;https://modelcontextprotocol.io/docs/tools/inspector&quot;&gt;MCP inspector&lt;/a&gt;, since version &lt;code&gt;0.6.0&lt;/code&gt;.
+Simply spin up the inspector, and paste the access token in the &quot;Authentication &gt; Bearer&quot; field on the left-hand menu.
+Then click Connect: you should be able to make MCP calls.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://static.spring.io/blog/dgarnier/20250402/mcp-inspector.png&quot; alt=&quot;MCP inspector screenshot&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If you would like to run this yourself, you can check out &lt;a href=&quot;https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-webmvc-oauth2-server&quot;&gt;the sample code&lt;/a&gt; in the &lt;code&gt;spring-ai-examples&lt;/code&gt; repository.&lt;/p&gt;
+&lt;h2 id=&quot;whats-next&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#whats-next&quot; aria-label=&quot;whats next permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What&apos;s next?&lt;/h2&gt;
+&lt;p&gt;In this example, we have implemented foundational OAuth2 capabilities in the MCP Server.&lt;/p&gt;
+&lt;p&gt;The obvious next step is to update MCP Client and allow it to authenticate with the Server, and use the &quot;authorization code&quot; OAuth2 grant.
+With this flow, users can log in with their own credentials, and obtain user-bound tokens, allowing for more fine-grained permissions, for example with Roles-Based Access Control (RBAC).&lt;/p&gt;
+&lt;p&gt;We will also explore using an external OAuth2 Authorization Server for issuing tokens, and only implementing the Resource Server capabilities in our MCP Servers.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[This Week in Sprng - April 1st, 2025]]></title><link>https://spring.io/blog/2025/04/01/this-week-in-spring-april-1st-2025</link><guid isPermaLink="true">https://spring.io/blog/2025/04/01/this-week-in-spring-april-1st-2025</guid><dc:creator><![CDATA[joshlong]]></dc:creator><pubDate>Tue, 01 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Welcome to another exciting installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! It&apos;s April Fools day, so be wary of things you read on the internet, but it&apos;s &lt;em&gt;also&lt;/em&gt; the 11th anniversary of Spring Boot 1.0, which &lt;a href=&quot;https://spring.io/blog/2014/04/01/spring-boot-1-0-ga-released&quot;&gt;was released this day in 2014! (that&apos;s not an April Fools)&lt;/a&gt;. Happy birthday!&lt;/p&gt;
+&lt;p&gt;I&apos;m in excellent Austin, TX, at Dr. Venkat Subramaniam&apos;s phenomenal &lt;a href=&quot;https://www.arcofai.com&quot;&gt;Arc of AI&lt;/a&gt; show. I love this show! So many amazing people -  many of whom also happen to be world-class speakers and engineers - converge in one place to synthesize their vantage point on &quot;A.I.&quot; in one hour. Of course, I will be talking about Spring AI.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I just did a video &lt;a href=&quot;https://www.youtube.com/watch?v=Y291afdLroQ&quot;&gt;looking at how to use Spring AI with Amazon Bedrock for AWS&lt;/a&gt; with the legendary James Ward, friend of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, Java Champion, and friend of the community.&lt;/li&gt;
+&lt;li&gt;that video in &lt;a href=&quot;https://community.aws/content/2v8AETAkyvPp9RVKC4YChncaEbs/running-mcp-based-agents-clients-servers-on-aws&quot;&gt;turn inspired a blog&lt;/a&gt; titled &quot;Running MCP Based Agents and Client-Servers on AWS&quot;..&lt;/li&gt;
+&lt;li&gt;and that blog was in turn just linked to by &lt;a href=&quot;https://www.linkedin.com/posts/swaminathansivasubramanian_agentic-systems-offer-possibilities-that-activity-7312929166201405440-EZv2?utm_source=share&amp;#x26;utm_medium=member_desktop&amp;#x26;rcm=ACoAAACXdIABb8VbfXttpb7WA9oliQsXOS5rEgw&quot;&gt;AWS Vice President Swami SivasubramanianSwami&lt;/a&gt; announcing   new AWS-related MCP integrations. Awesome! Thanks for the opportunity to collaborate, AWS! Peanut and Prancer, forever!&lt;/li&gt;
+&lt;li&gt;in last week&apos;s installment of &lt;em&gt;A Bootiful Podcast&lt;/em&gt;, I talked to my friend &lt;a href=&quot;https://spring.io/blog/2025/03/27/a-bootiful-podcast-anthony-dahanne&quot;&gt;Anthony Dahanne about build packs, production, Docker, and so much more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;there are some essential and breaking changes &lt;a href=&quot;https://spring.io/blog/2025/03/25/spring-ai-update-to-snapshots&quot;&gt;in Spring AI &lt;code&gt;main&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I love this! My longtime friend, industry analyst, pundit, and thought lord extraordinaire Michael Coté looks at using Spring AI to build an MCP service with Spring AI&apos;s MCP support! This is an &lt;a href=&quot;https://www.youtube.com/watch?v=iROihhd_OiI&quot;&gt;Amazing video&lt;/a&gt; from a guy who does fantastic things.&lt;/li&gt;
+&lt;li&gt;JavaCodeGeeks has a nice &lt;a href=&quot;https://www.javacodegeeks.com/spring-security-one-time-token-login-example.html&quot;&gt;post on One Time Token login&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I may be a bit biased, and this video doesn&apos;t leave a lot of room for the nuance required to have these sorts of discussions, but &lt;a href=&quot;https://www.youtube.com/watch?v=nKE8pqvhrs8&quot;&gt;I found this video hilarious&lt;/a&gt;. That said, I disagree with the premise because it&apos;s absurd on the face :-) Spring Boot is a sound synthesis of several different concerns. I, just Josh Long, might even say it&apos;s the best. But that&apos;s not to say that other technologies don&apos;t do certain things better or that other technologies didn&apos;t do certain things first...&lt;/li&gt;
+&lt;li&gt;Rod Johnson, the creator of Spring, &lt;a href=&quot;https://www.youtube.com/watch?v=Rx3XZoqbi78&quot;&gt;talks about his love affair with Kotlin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/live/mk_2MIWxLI0?t=3488s&quot;&gt;the Java 24 launch keynote from JavaOne is now available&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;super cool! Spring Framework 7.0 (which, along with Spring Boot 4.0, is due later this year) &lt;a href=&quot;https://github.com/sbrannen/spring-framework/commit/8379ac772af44ac56b5cd9752822a5a6f3c770de&quot;&gt;will unwrap &lt;code&gt;Optional&amp;#x3C;T&gt;&lt;/code&gt; to its value&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;just putting this excellent blog with Hashicorp Vault legend Rosemary Wang from last year here for those who (seemingly always) need it: &lt;a href=&quot;https://www.hashicorp.com/en/blog/reload-ssl-certificates-from-hashicorp-vault-for-spring-boot&quot;&gt;how to reload SSL with Spring and Hashicorp Vault&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;the legendary Oliver Drohtbom reworked a sample application using Spring Modulitht &lt;a href=&quot;https://github.com/odrotbohm/cqrs-spring-modulith&quot;&gt;to support CQRS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Java Mission Control 9 is &lt;a href=&quot;https://www.oracle.com/java/technologies/javase/products-jmc9-downloads.html&quot;&gt;updated and available for downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Now reading: &lt;a href=&quot;https://blog.stackademic.com/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed?gi=6a72e2c1b8c3&quot;&gt;&lt;em&gt;How I optimized a Spring Boot application to handle 1 million requests a second&lt;/em&gt;&lt;/a&gt;. This is a &lt;em&gt;fantastic&lt;/em&gt; read! I wonder if he would&apos;ve gotten the same results with virtual threads.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>

@@ -1,0 +1,96 @@
+package com.app.core;
+
+import java.time.LocalDate;
+
+import com.app.utils.StatusEnum;
+
+//  taskId, taskName, description, taskDate, status, active
+public class Task {
+	private static int taskId;
+	private String taskName;
+	private String description;
+	private LocalDate taskDate;
+	private StatusEnum status;
+	private boolean active;
+
+
+	/// constructor
+	public Task(String taskName, String description, LocalDate taskDate, StatusEnum status) {
+		Task.taskId = taskId++;
+		this.taskName = taskName;
+		this.description = description;
+		this.taskDate = taskDate;
+		this.status = status;
+		this.active = true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Task [taskName=" + taskName + ", description=" + description + ", taskDate=" + taskDate + ", status="
+				+ status + ", active=" + active + "]";
+	}
+
+
+	public static int getTaskId() {
+		return taskId;
+	}
+
+
+	public static void setTaskId(int taskId) {
+		Task.taskId = taskId;
+	}
+
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public LocalDate getTaskDate() {
+		return taskDate;
+	}
+
+
+	public void setTaskDate(LocalDate taskDate) {
+		this.taskDate = taskDate;
+	}
+
+
+	public StatusEnum getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(StatusEnum status) {
+		this.status = status;
+	}
+
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+
+}
+

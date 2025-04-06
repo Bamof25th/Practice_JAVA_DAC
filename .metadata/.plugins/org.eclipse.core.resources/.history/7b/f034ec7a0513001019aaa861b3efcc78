@@ -1,0 +1,29 @@
+package com.app.core;
+
+import java.time.LocalDate;
+
+import com.app.operations.TaskManager;
+import com.app.utils.StatusEnum;
+
+public class Task implements TaskManager{
+	private static int taskId;
+	private String taskName;
+	private String description;
+	private LocalDate taskDate;
+	private StatusEnum status;
+	private boolean active;
+
+	public Task(String taskName, String description, LocalDate taskDate, StatusEnum status, boolean active) {
+		super();
+		this.taskName = taskName;
+		this.description = description;
+		this.taskDate = taskDate;
+		this.status = status;
+		this.active = active;
+	}
+}
+
+
+//, description, taskDate, status, active
+
+/// constructor

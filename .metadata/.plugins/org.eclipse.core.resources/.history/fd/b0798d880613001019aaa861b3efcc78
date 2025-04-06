@@ -1,0 +1,50 @@
+package com.app.operations;
+
+import java.util.HashMap;
+
+import com.app.core.Task;
+
+public class TaskListImplemeantation implements TaskManager {
+	private HashMap<Integer, Task> taskMap;
+
+	public TaskListImplemeantation() {
+
+		this.taskMap = new HashMap<>();
+	}
+
+	@Override
+	public void addTask(String taskName, String description, String taskDate, String status, boolean active) {
+		
+
+	}
+
+	@Override
+	public String deleteTask(int taskId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateTaskStatus(int taskId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void displayAllPendingTasks() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void displayAllTaskForToday() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void displayAllSorted() {
+		// TODO Auto-generated method stub
+
+	}
+}

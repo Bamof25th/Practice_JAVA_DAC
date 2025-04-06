@@ -1,0 +1,28 @@
+package com.app.core;
+
+import java.time.LocalDate;
+
+import com.app.utils.StatusEnum;
+
+//  taskId, taskName, description, taskDate, status, active
+public class Task {
+	private static int taskId;
+	private String taskName;
+	private String description;
+	private LocalDate taskDate;
+	private StatusEnum status;
+	private boolean active;
+
+
+	/// constructor
+	public Task(String taskName, String description, LocalDate taskDate, StatusEnum status, boolean active) {
+		Task.taskId = taskId++;
+		this.taskName = taskName;
+		this.description = description;
+		this.taskDate = taskDate;
+		this.status = status;
+		this.active = active;
+	}
+
+}
+

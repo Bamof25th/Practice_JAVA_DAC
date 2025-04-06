@@ -1,0 +1,7 @@
+package com.app.utils;
+
+public enum StatusEnum {
+	PENDING,
+	INPROGRESS,
+	COMPLETED;
+}

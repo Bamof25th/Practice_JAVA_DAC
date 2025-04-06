@@ -1,0 +1,14 @@
+package com.app.core;
+
+import java.time.LocalDate;
+
+public class Task {
+	private static int taskId;
+	private String taskName;
+	private String description;
+	private LocalDate taskDate;
+	private boolean active;
+	
+}
+
+//, description, taskDate, status, active

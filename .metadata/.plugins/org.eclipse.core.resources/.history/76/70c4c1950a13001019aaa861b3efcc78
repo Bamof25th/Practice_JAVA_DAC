@@ -1,0 +1,61 @@
+package com.app.operations;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+
+import com.app.core.Task;
+import com.app.utils.StatusEnum;
+
+public class TaskListImplemeantation implements TaskManager {
+	private HashMap<Integer, Task> taskMap;
+
+	public TaskListImplemeantation() {
+
+		this.taskMap = new HashMap<>();
+	}
+
+	@Override
+	public void addTask(String taskName, String description, String taskDate, String status) {
+
+		LocalDate ld = LocalDate.parse(taskDate);
+		StatusEnum s = StatusEnum.valueOf(status.toUpperCase());
+		Task t = new Task(taskName, description, ld, s);
+		taskMap.put(Task.getTaskId(), t);
+	}
+
+	@Override
+	public String deleteTask(int taskId) {
+
+		Task t = taskMap.get(taskId);
+		taskMap.remove(taskId);
+
+		return t + " deleted Succesfully!!!";
+	}
+
+	@Override
+	public String updateTaskStatus(int taskId, String status) {
+
+		StatusEnum s = StatusEnum.valueOf(status.toUpperCase());
+		Task t = taskMap.get(taskId);
+		t.setStatus(s);
+
+		return "Status Updated Succesfuly to :" + t.getStatus();
+	}
+
+	@Override
+	public void displayAllPendingTasks() {
+		taskMap.values().stream().filter(t -> t.getStatus() == StatusEnum.valueOf("PENDING"))
+				.forEach(t -> System.out.println(t));
+	}
+
+	@Override
+	public void displayAllTaskForToday() {
+		taskMap.values().stream().filter(t -> t.getTaskDate() == LocalDate.now()).forEach(t -> System.out.println(t));
+	}
+
+	@Override
+	public void displayAllSortedByDate() {
+		taskMap.values().stream().sorted((t1, t2) -> t1.getTaskDate().compareTo(t2.getTaskDate()))
+				.forEach(t -> System.out.println(t));
+	}
+}
