@@ -70,7 +70,8 @@ public class TaskListImplemeantation implements TaskManager {
 
 	@Override
 	public void displayAllSortedByDate() {
-		taskMap.values().stream().sorted((t1, t2) -> t1.getTaskDate().compareTo(t2.getTaskDate()))
+		taskMap.values().stream()
+				.sorted((t1, t2) -> t1.getTaskDate().compareTo(t2.getTaskDate()))
 				.forEach(t -> System.out.println(t));
 	}
 }
