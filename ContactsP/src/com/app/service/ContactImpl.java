@@ -8,14 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 import com.app.core.Contact;
 import com.app.core.Key;
 import com.app.exception.CustomException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 public class ContactImpl implements Contactin {
 
@@ -93,7 +90,7 @@ public class ContactImpl implements Contactin {
 	public void displayDb() throws CustomException {
 
 		map.values().stream().filter(p -> p.getDob().getMonthValue() == LocalDate.now().getMonthValue())
-				.filter(p -> LocalDate.now().getDayOfMonth() - p.getDob().getDayOfMonth() == 3)
+				.filter(p ->  p.getDob().getDayOfMonth() - LocalDate.now().getDayOfMonth()== 3)
 				.forEach(p -> System.out.println(p));
 	}
 

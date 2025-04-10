@@ -51,7 +51,6 @@ public class Test {
 
 					System.out.print("Enter email: ");
 					String email = sc.nextLine();
-					System.out.println(email);
 
 					System.out.print("How many phone numbers? ");
 					int count = sc.nextInt();
